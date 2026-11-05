@@ -34,7 +34,7 @@ See [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md) for a step-by-step walkthrough 
 
 ## Quick start
 
-**Train on Colab (free GPU).** Open [`notebooks/train_colab.ipynb`](notebooks/train_colab.ipynb) in Google Colab and run the cells top to bottom.
+**Train on Colab (free GPU).** Open [`notebooks/train_colab.ipynb`](notebooks/train_colab.ipynb) in Google Colab and choose Run all. By default it trains on six public-domain Max Fleischer *Superman* shorts (1941–43) from the [Internet Archive](https://archive.org/details/fleischer-superman) and holds out a seventh for testing.
 
 **Or locally:**
 
@@ -66,6 +66,7 @@ train.py          Training loop with checkpointing and resume
 colorize.py       Inference for an image, a folder or a video, with FPS measurement
 scripts/
   extract_frames.py   Sample frames from cartoon videos
+  make_results.py     Results grid on held-out frames
 notebooks/
   train_colab.ipynb   End-to-end training on a free Colab GPU
 ```
