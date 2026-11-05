@@ -2,8 +2,6 @@
 
 Turns black-and-white cartoon frames into color with a CycleGAN trained on **unpaired** data. It needs no matched grayscale/color pairs, just a folder of color cartoon frames.
 
-> **Originally built in Fall 2024** as a course project in my first semester of the MS in Computer Engineering at San José State University. **Rebuilt in November 2026** with cleaner code, reproducible training on a free Colab GPU, and video inference.
-
 <!-- After training, replace this with your own results grid:
 ![Grayscale input, colorized output, reconstruction](assets/results.png)
 -->

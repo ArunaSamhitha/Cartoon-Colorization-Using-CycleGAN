@@ -39,7 +39,7 @@ def parse_args():
 def main():
     args = parse_args()
     torch.manual_seed(args.seed)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     out = Path(args.out)
     (out / "samples").mkdir(parents=True, exist_ok=True)
     (out / "checkpoints").mkdir(parents=True, exist_ok=True)

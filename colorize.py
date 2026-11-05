@@ -75,7 +75,7 @@ def main():
     p.add_argument("--output", required=True)
     args = p.parse_args()
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
     G, size = load_generator(args.ckpt, device)
     src, dst = Path(args.input), Path(args.output)
 
