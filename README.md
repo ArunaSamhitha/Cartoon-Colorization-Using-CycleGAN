@@ -80,7 +80,7 @@ _Coming soon: results from the rebuilt version, with training details and the me
 
 - Colors are plausible for the show's style, not "correct". The model can't know a character's original colors if it never saw them.
 - CycleGAN changes color and texture well but not shape. That suits colorization, since the line art stays the same.
-- Training at 256 px takes a few hours on a Colab T4. 128 px with `--n-blocks 6` is much faster for experiments.
+- Training at 128 px with `--n-blocks 6` takes about 4.7 minutes per epoch on a Colab T4 (about 2 hours for the notebook default of 25 epochs). 256 px is roughly 4× slower.
 
 ## License
 
