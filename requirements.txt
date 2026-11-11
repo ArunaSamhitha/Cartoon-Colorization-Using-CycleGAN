@@ -3,3 +3,6 @@ torchvision>=0.16
 pillow
 numpy
 opencv-python
+scikit-image
+matplotlib
+torchmetrics[image]>=1.3

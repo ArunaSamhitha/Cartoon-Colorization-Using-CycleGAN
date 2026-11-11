@@ -49,7 +49,12 @@ python scripts/extract_frames.py --videos clips/ --out data/frames --every 12
 # 2. Train
 python train.py --frames data/frames --out runs/exp1 --epochs 100 --decay-start 50
 
-# 3. Colorize an image, a folder, or a whole video
+# 3. Score it on frames from an episode it never saw, against their true colors
+python scripts/extract_frames.py --videos heldout_episode.mp4 --out data/heldout --every 24
+python scripts/evaluate.py --frames data/heldout --train-frames data/frames \
+    --model full=runs/exp1/checkpoints/colorizer.pt --out results/eval
+
+# 4. Colorize an image, a folder, or a whole video
 python colorize.py --ckpt runs/exp1/checkpoints/colorizer.pt --input bw_clip.mp4 --output color_clip.mp4
 ```
 
@@ -62,19 +67,22 @@ cyclegan/
   models.py       Generator (ResNet) and PatchGAN discriminator
   data.py         Unpaired grayscale/color dataset from one folder of frames
   utils.py        Image history buffer, LR schedule, sample grids
-train.py          Training loop with checkpointing and resume
+train.py          Training loop with mixed precision, checkpointing and resume
 colorize.py       Inference for an image, a folder or a video, with FPS measurement
 scripts/
   extract_frames.py   Sample frames from cartoon videos
   make_results.py     Results grid on held-out frames
+  evaluate.py         PSNR, SSIM, ΔE2000, LPIPS, FID and colorfulness vs. ground truth, with baselines
+  benchmark.py        Inference throughput across batch sizes and precisions
+  plot_history.py     Loss curves from one or more runs
 notebooks/
   train_colab.ipynb   End-to-end training on a free Colab GPU
 ```
 
 ## Results
 
-<!-- Fill in from your own run: dataset size, epochs, GPU, FPS printed by colorize.py -->
-_Coming soon: results from the rebuilt version, with training details and the measured video FPS._
+<!-- Paste results.md from the notebook's evaluation step here, plus assets/loss_curves.png -->
+_Coming soon._ The Colab notebook trains the model and an identity-loss ablation, then scores both against two baselines (`grayscale`, and `mean_tint`: the training set's average color over the input) on a held-out episode, with 95% bootstrap confidence intervals.
 
 ## Limitations
 
